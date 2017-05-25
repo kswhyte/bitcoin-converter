@@ -1,5 +1,8 @@
 import React from 'react'
-import './App.scss'
+import '../styles/App.scss'
+
+import Header from './Header.jsx'
+import Content from './Content.jsx'
 
 class App extends Component {
   constructor(){
@@ -14,7 +17,6 @@ class App extends Component {
       <div className="site-wrapper">
         <Header />
         <Content />
-        <Footer />
       </div>
     )
   }
