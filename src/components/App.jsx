@@ -4,8 +4,8 @@ import '../styles/App.scss'
 import Header from './Header.jsx'
 import Content from './Content.jsx'
 
-class App extends Component {
-  constructor(){
+class App extends React.Component {
+  constructor() {
     super()
     this.state = {
       test: '',

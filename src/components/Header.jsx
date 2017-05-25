@@ -1,8 +1,8 @@
 import React from 'react'
 import '../styles/Header.scss'
 
-class Header extends Component {
-  constructor(){
+class Header extends React.Component {
+  constructor() {
     super()
     this.state = {
       test: '',

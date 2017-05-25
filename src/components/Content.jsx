@@ -1,8 +1,8 @@
 import React from 'react'
 import '../styles/Content.scss'
 
-class Content extends Component {
-  constructor(){
+class Content extends React.Component {
+  constructor() {
     super()
     this.state = {
       test: '',
