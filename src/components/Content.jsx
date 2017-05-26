@@ -20,17 +20,18 @@ class Content extends React.Component {
   }
 
   fetchBcieData() {
-    fetch('/xyz', {
+    fetch('https://btc-e.com/api/3/ticker/btc_usd-btc_rur', {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
       method: 'get',
     })
-    .then((res) => res.json())
+    // .then((res) => res.json())
     .then((res) => {
+      const btcAvg = res.btce.btc_usd.avg
       this.setState({
-        btceAverage: res,
+        btceAverage: btcAvg,
       })
     })
     .catch((err) => {
