@@ -4,13 +4,17 @@ import '../styles/App.scss'
 import Header from './Header.jsx'
 import Content from './Content.jsx'
 
+require('es6-promise').polyfill()
+require('isomorphic-fetch')
+
 class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      test: '',
+      apiData: 'api test data',
     }
   }
+
 
   render() {
     return (
