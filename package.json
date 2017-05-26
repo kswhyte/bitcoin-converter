@@ -14,6 +14,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "es6-promise": "^4.1.0",
+    "isomorphic-fetch": "^2.2.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-hot-loader": "^3.0.0-beta.3"
