@@ -18,7 +18,11 @@ server.listen(port, () => {
 
 app.locals.title = 'Bitcoin Converter'
 
-app.get('/api/v1/bitcoin', (req, res) => {
-  // let polls = app.locals.pollForms
-  // res.send(polls)
-})
+app.get('/', (req, res) =>
+  res.send('Hello World!')
+)
+
+// app.get('/api/v1/bitcoin', (req, res) => {
+//   // let polls = app.locals.pollForms
+//   // res.send(polls)
+// })
