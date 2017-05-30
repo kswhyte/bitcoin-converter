@@ -1,6 +1,9 @@
 import React from 'react'
 import '../styles/Content.scss'
 
+require('es6-promise').polyfill()
+require('isomorphic-fetch')
+
 class Content extends React.Component {
   constructor() {
     super()
@@ -20,18 +23,21 @@ class Content extends React.Component {
   }
 
   fetchBcieData() {
-    fetch('https://btc-e.com/api/3/ticker/btc_usd-btc_rur', {
+    fetch('https://btc-e.com/api/3/ticker/btc_usd', {
+      method: 'get',
+      mode: 'no-cors',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
       },
-      method: 'get',
     })
     // .then((res) => res.json())
     .then((res) => {
-      const btcAvg = res.btce.btc_usd.avg
+      // const btcAvg = res.json()
+      console.log('hi', res)
       this.setState({
-        btceAverage: btcAvg,
+        btceAverage: res.btc_usd,
       })
     })
     .catch((err) => {
@@ -57,7 +63,7 @@ class Content extends React.Component {
           onChange={this.handleInputChange}
         />
         <span className="btce">
-          BTC-E average is at {this.state.btceAverage}
+          BTC-E average is at
         </span>
         <span className="btce-conversion">
           Bitcoin Converted to BTC-E: {this.state.btceConversion}
