@@ -1,3 +1,16 @@
+var mongoose = require('mongoose')
+
+mongoose.connect('mongodb://localhost/currency', () => {
+  console.log('connected.')
+  //Add currencies
+  let currencies = [{
+
+  }]
+
+  //iterate through them
+})
+
+
 // var MongoClient = require('mongodb').MongoClient
 //   , assert = require('assert');
 //

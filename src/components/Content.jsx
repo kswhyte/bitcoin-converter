@@ -1,8 +1,10 @@
 import React from 'react'
+import axios from 'axios'
 import '../styles/Content.scss'
 
 require('es6-promise').polyfill()
 require('isomorphic-fetch')
+
 
 class Content extends React.Component {
   constructor() {
@@ -23,25 +25,12 @@ class Content extends React.Component {
   }
 
   fetchBcieData() {
-    fetch('https://btc-e.com/api/3/ticker/btc_usd', {
-      method: 'get',
-      mode: 'no-cors',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
-    })
-    // .then((res) => res.json())
+    axios.get('http://localhost:1111')
     .then((res) => {
-      // const btcAvg = res.json()
-      console.log('hi', res)
-      this.setState({
-        btceAverage: res.btc_usd,
-      })
+      console.log('RES', res)
     })
-    .catch((err) => {
-      throw err
+    .catch((error) => {
+      console.log(error)
     })
   }
 
