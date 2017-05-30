@@ -1,14 +1,17 @@
-var mongoose = require('mongoose')
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/test');
 
-mongoose.connect('mongodb://localhost/currency', () => {
-  console.log('connected.')
-  //Add currencies
-  let currencies = [{
-
-  }]
-
-  //iterate through them
-})
+// var mongoose = require('mongoose')
+//
+// mongoose.connect('mongodb://localhost/currency', () => {
+//   console.log('connected.')
+//   //Add currencies
+//   let currencies = [{
+//
+//   }]
+//
+//   //iterate through them
+// })
 
 
 // var MongoClient = require('mongodb').MongoClient

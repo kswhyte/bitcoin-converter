@@ -1,9 +1,9 @@
 const http = require('http')
 const express = require('express')
 const bodyParser = require('body-parser')
-const path = require('path')
 const cors = require('cors')
 const axios = require('axios')
+// const path = require('path')
 
 require('./database.js')
 
@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 //   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
 //   next()
 // })
-// app.use(express.static(path.resolve(__dirname, '..', 'build')));
+// app.use(express.static(path.resolve(__dirname, '..', 'build')))
 //
 // app.use(express.static(path.resolve(__dirname, '.', 'build')))
 //
@@ -36,52 +36,25 @@ server.listen(port, () => {
 
 app.locals.title = 'Bitcoin Converter'
 
-app.get('/', (req, res) => {
+app.get('/btce', (req, res) => {
   axios.get('https://btc-e.com/api/3/ticker/eth_btc-ltc_btc-dsh_btc')
   .then((response) => {
-    // console.log('RES', res.data)
+    // send response into mongo db
+    // res.send(grab the data from mongo to send back to client)
     res.send(response.data)
   })
   .catch((error) => {
     console.log(error)
   })
-
-  // res.send(response)
 })
 
-// app.get('/api/v1/bitcoin', (req, res) => {
-//   // let polls = app.locals.pollForms
-//   // res.send(polls)
-// })
-
-app.get('https://btc-e.com/api/3/ticker/btc_usd-btc_btc?ignore_invalid=1', (error, res, body) => {
-  if (error && res.statusCode !== 200) {
-    console.log('Error when contacting google.com')
-  }
-  console.log('statusCode: ', res.statusCode)
+app.get('/poloniex', (req, res) => {
+  axios.get('https://poloniex.com/public?command=returnTicker')
+  .then((response) => {
+    console.log('RES2', response.data)
+  })
+  .catch((error) => {
+    console.log(error)
+  })
+  res.send('hello')
 })
-
-
-// fetchBcieData() {
-//   fetch('https://btc-e.com/api/3/ticker/btc_usd-btc_btc?ignore_invalid=1', {
-//     method: 'get',
-//     mode: 'no-cors',
-//     body: JSON.stringify(data),
-//     headers: {
-//       Accept: 'application/json',
-//       'Content-Type': 'application/json',
-//       'Access-Control-Allow-Origin': '*',
-//     },
-//   })
-//   // .then((res) => res.json())
-//   .then((res) => {
-//     // const btcAvg = res.json()
-//     console.log('hi', res)
-//     this.setState({
-//       btceAverage: res.btc_usd,
-//     })
-//   })
-//   .catch((err) => {
-//     throw err
-//   })
-// }

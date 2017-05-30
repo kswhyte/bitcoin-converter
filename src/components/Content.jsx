@@ -1,43 +1,24 @@
 import React from 'react'
-import axios from 'axios'
+
+import Btce from './Btce.jsx'
+import Poloniex from './Poloniex.jsx'
 import '../styles/Content.scss'
 
-require('es6-promise').polyfill()
-require('isomorphic-fetch')
-
+// require('es6-promise').polyfill()
+// require('isomorphic-fetch')
 
 class Content extends React.Component {
   constructor() {
     super()
     this.state = {
-      btceAverage: 0,
-      btceConversion: 0,
-      poloniexAverage: 0,
-      coinCapAverage: 0,
+      inputValue: 0,
     }
   }
 
-  // https://btc-e.com/api/3/<method name>/<pair listing>
-  // https://btc-e.com/api/3/ticker/btc_usd-btc_rur
-
-  componentDidMount() {
-    this.fetchBcieData()
-  }
-
-  fetchBcieData() {
-    axios.get('http://localhost:1111')
-    .then((res) => {
-      console.log('RES', res)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-  }
-
   handleInputChange(e) {
-    const inputAmount = e.target.value / 1
+    // console.log(e.target.value)
     this.setState({
-      btceConversion: inputAmount,
+      inputValue: e.target.value,
     })
   }
 
@@ -45,18 +26,26 @@ class Content extends React.Component {
     return (
       <section className="content">
         <h1>Enter Bitcoin Amount to Convert</h1>
+        <span className="input-value">
+          { this.state.inputValue } will be converted
+        </span>
         <input
           className="unit-input"
           type="text"
           value={this.state.btceAverage}
-          onChange={this.handleInputChange}
+          onChange={(e) => this.handleInputChange(e)}
         />
-        <span className="btce">
-          BTC-E average is at
-        </span>
-        <span className="btce-conversion">
-          Bitcoin Converted to BTC-E: {this.state.btceConversion}
-        </span>
+        <button
+          className="submit-btn"
+        >
+        Submit
+        </button>
+        <Btce
+          inputAmount={this.state.inputValue}
+        />
+        <Poloniex
+          inputAmount={this.state.inputValue}
+        />
       </section>
     )
   }
