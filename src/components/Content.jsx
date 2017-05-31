@@ -12,12 +12,11 @@ class Content extends React.Component {
   constructor() {
     super()
     this.state = {
-      inputValue: 0,
+      inputValue: '',
     }
   }
 
   handleInputChange(e) {
-    // console.log(e.target.value)
     this.setState({
       inputValue: e.target.value,
     })

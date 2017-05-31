@@ -12,20 +12,6 @@ const app = express()
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-// app.use(express.static('public'))
-
-// app.use((req, res, next) => {
-//   res.header('Access-Control-Allow-Origin', '*')
-//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-//   next()
-// })
-// app.use(express.static(path.resolve(__dirname, '..', 'build')))
-//
-// app.use(express.static(path.resolve(__dirname, '.', 'build')))
-//
-// app.get('/', (req, res) => {
-//   res.sendFile(path.resolve(__dirname, '.', 'build', 'index.html'))
-// })
 
 const port = process.env.PORT || 1111
 const server = http.createServer(app)
@@ -52,7 +38,6 @@ app.get('/btce', (req, res) => {
 app.get('/poloniex', (req, res) => {
   axios.get('https://poloniex.com/public?command=returnTicker')
   .then((response) => {
-    // console.log('RES_polo', response.data)
     res.send(response.data)
   })
   .catch((error) => {
@@ -63,7 +48,6 @@ app.get('/poloniex', (req, res) => {
 app.get('/coincap', (req, res) => {
   axios.get('http://www.coincap.io/front')
   .then((response) => {
-    // console.log('RES_capcoin', response.data)
     res.send(response.data)
   })
   .catch((error) => {

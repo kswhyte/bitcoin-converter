@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 import '../styles/Poloniex.scss'
 
@@ -32,27 +32,34 @@ class Poloniex extends React.Component {
     })
   }
 
+  convertCurrencies(currentCoinValue) {
+    return (parseInt(this.props.inputAmount, 10) / currentCoinValue).toFixed(2)
+  }
+
   render() {
+    const etheriumConverted = this.convertCurrencies(this.state.poloniexBtcToETH)
+    const litecoinConverted = this.convertCurrencies(this.state.poloniexBtcToLTC)
+    const dashConverted = this.convertCurrencies(this.state.poloniexBtcToDSH)
+
     return (
       <section className="btce">
         <h2>Conversion Rates from Poloniex:</h2>
         <p>
-          ETH: { (parseInt(this.props.inputAmount, 10) / this.state.poloniexBtcToETH).toFixed(2) }
+          ETH: { etheriumConverted }
         </p>
         <p>
-          LTC: { (parseInt(this.props.inputAmount, 10) / this.state.poloniexBtcToLTC).toFixed(2) }
+          LTC: { litecoinConverted }
         </p>
         <p>
-          DSH: { (parseInt(this.props.inputAmount, 10) / this.state.poloniexBtcToDSH).toFixed(2) }
+          DSH: { dashConverted }
         </p>
       </section>
     )
   }
 }
 
-export default Poloniex
+Poloniex.propTypes = {
+  inputAmount: PropTypes.string,
+}
 
-// Poloniex
-// .propTypes = {
-//   inputAmount: PropTypes.number,
-// }
+export default Poloniex

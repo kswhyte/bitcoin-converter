@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import '../styles/Btce.scss'
 
@@ -52,8 +52,8 @@ class Btce extends React.Component {
   }
 }
 
-export default Btce
+Btce.propTypes = {
+  inputAmount: PropTypes.string,
+}
 
-// Btce.propTypes = {
-//   inputAmount: PropTypes.number,
-// }
+export default Btce

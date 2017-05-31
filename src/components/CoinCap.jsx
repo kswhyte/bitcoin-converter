@@ -1,8 +1,8 @@
 import React from 'react'
 import axios from 'axios'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
-// import '../styles/CoinCap.scss'
+import '../styles/CoinCap.scss'
 
 class CoinCap extends React.Component {
   constructor() {
@@ -22,7 +22,6 @@ class CoinCap extends React.Component {
   fetchCoinCap() {
     axios.get('http://localhost:1111/coincap')
     .then((res) => {
-      console.log('RESdata1', res.data[1])
       this.setState({
         coinCapBTC: res.data[0].price,
         coinCapETH: res.data[1].price,
@@ -36,6 +35,9 @@ class CoinCap extends React.Component {
   }
 
   convertCurrencies(currentCoinValue) {
+    if (this.state.inputAmount === '') {
+      return 0
+    }
     const bitcoinCashVal = parseInt(this.props.inputAmount, 10) * this.state.coinCapBTC
     return (bitcoinCashVal / currentCoinValue).toFixed(2)
   }
@@ -62,9 +64,8 @@ class CoinCap extends React.Component {
   }
 }
 
-export default CoinCap
+CoinCap.propTypes = {
+  inputAmount: PropTypes.string,
+}
 
-// CoinCap
-// .propTypes = {
-//   inputAmount: PropTypes.number,
-// }
+export default CoinCap
