@@ -2,6 +2,7 @@ import React from 'react'
 
 import Btce from './Btce.jsx'
 import Poloniex from './Poloniex.jsx'
+import CoinCap from './CoinCap.jsx'
 import '../styles/Content.scss'
 
 // require('es6-promise').polyfill()
@@ -44,6 +45,9 @@ class Content extends React.Component {
           inputAmount={this.state.inputValue}
         />
         <Poloniex
+          inputAmount={this.state.inputValue}
+        />
+        <CoinCap
           inputAmount={this.state.inputValue}
         />
       </section>

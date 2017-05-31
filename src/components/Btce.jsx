@@ -37,19 +37,21 @@ class Btce extends React.Component {
     })
   }
 
+  convertCurrencies(currentCoinValue) {
+    return (parseInt(this.props.inputAmount, 10) / currentCoinValue).toFixed(2)
+  }
+
   render() {
+    const etheriumConverted = this.convertCurrencies(this.state.btceConvertToETH)
+    const litecoinConverted = this.convertCurrencies(this.state.btceConvertToLTC)
+    const dashConverted = this.convertCurrencies(this.state.btceConvertToDSH)
+
     return (
       <section className="btce">
         <h2>Conversion Rates from BTC-E:</h2>
-        <p>
-          ETH: { (parseInt(this.props.inputAmount, 10) / this.state.btceConvertToETH).toFixed(2) }
-        </p>
-        <p>
-          LTC: { (parseInt(this.props.inputAmount, 10) / this.state.btceConvertToLTC).toFixed(2) }
-        </p>
-        <p>
-          DSH: { (parseInt(this.props.inputAmount, 10) / this.state.btceConvertToDSH).toFixed(2) }
-        </p>
+        <p>ETH: { etheriumConverted }</p>
+        <p>LTC: { litecoinConverted }</p>
+        <p>DSH: { dashConverted }</p>
       </section>
     )
   }

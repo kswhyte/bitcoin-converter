@@ -52,7 +52,18 @@ app.get('/btce', (req, res) => {
 app.get('/poloniex', (req, res) => {
   axios.get('https://poloniex.com/public?command=returnTicker')
   .then((response) => {
-    console.log('RES_polo', response.data)
+    // console.log('RES_polo', response.data)
+    res.send(response.data)
+  })
+  .catch((error) => {
+    console.log(error)
+  })
+})
+
+app.get('/coincap', (req, res) => {
+  axios.get('http://www.coincap.io/front')
+  .then((response) => {
+    // console.log('RES_capcoin', response.data)
     res.send(response.data)
   })
   .catch((error) => {

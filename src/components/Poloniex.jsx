@@ -4,8 +4,7 @@ import axios from 'axios'
 
 import '../styles/Poloniex.scss'
 
-class Poloniex
- extends React.Component {
+class Poloniex extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -22,7 +21,6 @@ class Poloniex
   fetchPoloniex() {
     axios.get('http://localhost:1111/poloniex')
     .then((res) => {
-      console.log('RES222', res.data.BTC_ETH.last)
       this.setState({
         poloniexBtcToETH: res.data.BTC_ETH.last,
         poloniexBtcToLTC: res.data.BTC_LTC.last,
