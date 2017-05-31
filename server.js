@@ -39,6 +39,7 @@ app.locals.title = 'Bitcoin Converter'
 app.get('/btce', (req, res) => {
   axios.get('https://btc-e.com/api/3/ticker/eth_btc-ltc_btc-dsh_btc')
   .then((response) => {
+    // console.log('RES_btce', response)
     // send response into mongo db
     // res.send(grab the data from mongo to send back to client)
     res.send(response.data)
@@ -51,10 +52,10 @@ app.get('/btce', (req, res) => {
 app.get('/poloniex', (req, res) => {
   axios.get('https://poloniex.com/public?command=returnTicker')
   .then((response) => {
-    console.log('RES2', response.data)
+    console.log('RES_polo', response.data)
+    res.send(response.data)
   })
   .catch((error) => {
     console.log(error)
   })
-  res.send('hello')
 })

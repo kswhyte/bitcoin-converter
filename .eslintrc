@@ -4,7 +4,9 @@
   "rules": {
     "react/require-extension": "off",
     "linebreak-style": "off",
-    "semi": 0
+    "semi": 0,
+    "no-console": 0,
+    "react/prop-types": 0,
   },
   "env": {
     "browser": true

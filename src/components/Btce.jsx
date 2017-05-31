@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import '../styles/Btce.scss'
 
@@ -25,8 +25,6 @@ class Btce extends React.Component {
   fetchBtceData() {
     axios.get('http://localhost:1111/btce')
     .then((res) => {
-      // eslint-disable-next-line no-console
-      console.log('RES', res)
       this.setState({
         btceConvertToETH: res.data.eth_btc.last,
         btceConvertToLTC: res.data.ltc_btc.last,
@@ -59,6 +57,6 @@ class Btce extends React.Component {
 
 export default Btce
 
-Btce.propTypes = {
-  inputAmount: PropTypes.number,
-}
+// Btce.propTypes = {
+//   inputAmount: PropTypes.number,
+// }
