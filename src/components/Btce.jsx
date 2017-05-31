@@ -4,10 +4,6 @@ import axios from 'axios'
 
 import '../styles/Btce.scss'
 
-// require('es6-promise').polyfill()
-// require('isomorphic-fetch')
-
-
 class Btce extends React.Component {
   constructor() {
     super()
@@ -32,7 +28,6 @@ class Btce extends React.Component {
       })
     })
     .catch((error) => {
-      // eslint-disable-next-line no-console
       console.log(error)
     })
   }

@@ -8,6 +8,7 @@ class CoinCap extends React.Component {
   constructor() {
     super()
     this.state = {
+      coinCapBTC: 0,
       coinCapETH: 0,
       coinCapLTC: 0,
       coinCapDSH: 0,
@@ -28,32 +29,33 @@ class CoinCap extends React.Component {
         coinCapLTC: res.data[5].price,
         coinCapDSH: res.data[6].price,
       })
-      // this.findCoinRates(res.data)
     })
     .catch((error) => {
       console.log(error)
     })
   }
 
-  // findCoinRates(bitcoinData) {
-  //   console.log('res0', bitcoinData)
-  //   bitcoinData.find(coin => {
-  //     coin.
-  //   })
-  // }
+  convertCurrencies(currentCoinValue) {
+    const bitcoinCashVal = parseInt(this.props.inputAmount, 10) * this.state.coinCapBTC
+    return (bitcoinCashVal / currentCoinValue).toFixed(2)
+  }
 
   render() {
+    const etheriumConverted = this.convertCurrencies(this.state.coinCapETH)
+    const litecoinConverted = this.convertCurrencies(this.state.coinCapLTC)
+    const dashConverted = this.convertCurrencies(this.state.coinCapDSH)
+
     return (
       <section className="btce">
         <h2>Conversion Rates from CoinCap:</h2>
         <p>
-          ETH: { (parseInt(this.props.inputAmount, 10) / this.state.coinCapETH).toFixed(2) }
+          ETH: { etheriumConverted }
         </p>
         <p>
-          LTC: { (parseInt(this.props.inputAmount, 10) / this.state.coinCapLTC).toFixed(2) }
+          LTC: { litecoinConverted }
         </p>
         <p>
-          DSH: { (parseInt(this.props.inputAmount, 10) / this.state.coinCapDSH).toFixed(2) }
+          DSH: { dashConverted }
         </p>
       </section>
     )
