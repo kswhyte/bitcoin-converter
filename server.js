@@ -15,6 +15,17 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 const port = process.env.PORT || 1111
 const server = http.createServer(app)
+// -----
+const mongoose = require('mongoose')
+
+mongoose.connect('mongodb://localhost/test')
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', () => {
+  // we're connected!
+})
+// ---
 
 server.listen(port, () => {
   console.log(`Listening on port ${port}.`)
