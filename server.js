@@ -16,37 +16,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 const port = process.env.PORT || 1111
 const server = http.createServer(app)
 
-// -----
-const mongoose = require('mongoose')
-
-mongoose.connect('mongodb://localhost/test')
-
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => {
-  // we're connected!
-})
-// ---
-const coinSchema = mongoose.Schema({
-  nameLong: String,
-  nameShort: String,
-  price: Number,
-  time: String,
-})
-
-const Currency = mongoose.model('Currency', coinSchema)
-
-const ethereum = new Currency({ name: 'Ethereum' });
-console.log(ethereum.name)
-
-coinSchema.methods.speak = () => {
-  const coinPreference = this.name
-    ? `Huey loves  ${this.name}`
-    : "I don't have a coin preference"
-  console.log(coinPreference)
-}
-
-// ---
 server.listen(port, () => {
   console.log(`Listening on port ${port}.`)
 })
