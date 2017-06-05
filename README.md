@@ -1,4 +1,4 @@
-# Bitcoin Coverter
+# Bitcoin Converter
 
 Huey, Luey, and Duey need Bitcoins converted to different currencies. This web app converts Bitcoins to Etherium, Litecoin, and DASH using 3 APIs: BTC-E, Poloniex, and CoinCap with a React front-end and Node.js back-end.
 
